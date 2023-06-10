@@ -11,6 +11,7 @@ import {
 } from "../public/assets/images";
 import Image from "next/image";
 import BannerText from "./BannerText";
+import ButttonPrimary from "./ButttonPrimary";
 
 function SampleNextArrow(props: any) {
   const { onClick } = props;
@@ -131,7 +132,20 @@ const Banner = () => {
           </div>
         </Slider>
       </div>
-      <div className="w-1/3 border-[1px] border-gray-200 rounded-lg shadow-md p-4 flex flex-col justify-between"></div>
+      <div className="w-1/3 border-[1px] border-gray-200 rounded-lg shadow-md p-4 flex flex-col justify-between">
+        <div className="flex justify-between">
+          <h2 className="text-xl font-semibold text-black">
+            Flash pick of the Day
+          </h2>
+          <p>View All</p>
+        </div>
+        <Image className="h-60 object-cover" src={bannerImg} alt="flashsales" />
+        <ButttonPrimary />
+        <p className="text-lg text-black font-semibold">From $199.99</p>
+        <p className="text-base text-gray-500 -mt-1">
+          Sony TV Stand Cabinet for Living Room....
+        </p>
+      </div>
     </div>
   );
 };
