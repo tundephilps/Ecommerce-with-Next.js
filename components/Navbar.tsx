@@ -1,11 +1,25 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import shopper from "../public/assets/images/Shopper.png";
 import { IoIosSearch } from "react-icons/io";
 import { BsCartPlus, BsCart2 } from "react-icons/bs";
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+
 const Navbar = () => {
+  const productData = useSelector((state: any) => state.shopper.productData);
+  const [totalAmt, setTotalAmt] = useState("");
+
+  useEffect(() => {
+    let price = 0;
+    productData.map((item: any) => {
+      price += item.price * item.quantity;
+      return price;
+    });
+    setTotalAmt(price.toFixed(2));
+  }, [productData]);
+
   return (
     <header aria-label="Site Header" className="shadow-sm  bg-blue-200">
       <div className="mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4">
@@ -87,9 +101,9 @@ const Navbar = () => {
           <Link href="/cart">
             <div className="relative flex flex-col justify-center items-center gap-2 h-12 px-5 rounded-full bg-transparent hover:bg-yellow-500 duration-500">
               <BsCart2 className="text-2xl" />
-              <p>$0.00</p>
+              <p>${totalAmt}</p>
               <span className="absolute w-4 h-4 bg-yellow-400 text-black top-0 right-4 rounded-full flex items-center justify-center font-medium text-xs">
-                0
+                {productData.length > 0 ? productData.length : 0}
               </span>
             </div>
           </Link>
@@ -130,9 +144,9 @@ const Navbar = () => {
           <Link href="cart">
             <div className="relative flex flex-col justify-center items-center gap-2 h-12 px-5 rounded-full bg-transparent hover:bg-yellow-500 duration-500">
               <BsCart2 className="text-2xl" />
-              <p>$0.00</p>
+              <p>${totalAmt}</p>
               <span className="absolute w-4 h-4 bg-yellow-400 text-black top-0 right-4 rounded-full flex items-center justify-center font-medium text-xs">
-                0
+                {productData.length > 0 ? productData.length : 0}
               </span>
             </div>
           </Link>

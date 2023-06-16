@@ -1,9 +1,12 @@
+import { addToCart } from "@/redux/shopperSlice";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 const ProductDetails = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [product, setProduct] = useState<any>({});
   const [isLoading, setLoading] = useState(false);
 
@@ -12,6 +15,8 @@ const ProductDetails = () => {
     setProduct(router.query);
     setLoading(false);
   }, []);
+
+  const _id = Number(product._id);
 
   return (
     <section>
@@ -260,7 +265,21 @@ const ProductDetails = () => {
                 </div>
 
                 <button
-                  type="submit"
+                  onClick={() =>
+                    dispatch(
+                      addToCart({
+                        _id: _id,
+                        title: product.title,
+                        description: product.description,
+                        oldPrice: product.oldPrice,
+                        price: product.price,
+                        brand: product.brand,
+                        image: product.image,
+                        category: product.category,
+                        quantity: 1,
+                      })
+                    )
+                  }
                   className="block rounded bg-green-600 px-5 py-3 text-xs font-medium text-white hover:bg-green-500"
                 >
                   Add to Cart
