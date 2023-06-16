@@ -12,6 +12,7 @@ type Data = {
   isNew: boolean;
   category: string;
 }[];
+
 const productData = [
   {
     _id: 101,
