@@ -4,6 +4,7 @@ import shopper from "../public/assets/images/Shopper.png";
 import { IoIosSearch } from "react-icons/io";
 import { BsCartPlus, BsCart2 } from "react-icons/bs";
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
+import Link from "next/link";
 const Navbar = () => {
   return (
     <header aria-label="Site Header" className="shadow-sm  bg-blue-200">
@@ -30,10 +31,12 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
-        <div className="flex items-center justify-center gap-2">
-          <Image alt="" src={shopper} height={20} width={20} />
-          <h3 className="text-blue-800 font-bold">Shoper</h3>
-        </div>
+        <Link href="/">
+          <div className="flex items-center justify-center gap-2">
+            <Image alt="" src={shopper} height={20} width={20} />
+            <h3 className="text-blue-800 font-bold">Shoper</h3>
+          </div>
+        </Link>
         <div className="flex items-center gap-4">
           <a href="#">
             <span className="sr-only">Logo</span>
@@ -81,13 +84,15 @@ const Navbar = () => {
               <h2 className="text-base font-semibold -mt-1">Accounts</h2>
             </div>
           </div>
-          <div className="relative flex flex-col justify-center items-center gap-2 h-12 px-5 rounded-full bg-transparent hover:bg-yellow-500 duration-500">
-            <BsCart2 className="text-2xl" />
-            <p>$0.00</p>
-            <span className="absolute w-4 h-4 bg-yellow-400 text-black top-0 right-4 rounded-full flex items-center justify-center font-medium text-xs">
-              0
-            </span>
-          </div>
+          <Link href="/cart">
+            <div className="relative flex flex-col justify-center items-center gap-2 h-12 px-5 rounded-full bg-transparent hover:bg-yellow-500 duration-500">
+              <BsCart2 className="text-2xl" />
+              <p>$0.00</p>
+              <span className="absolute w-4 h-4 bg-yellow-400 text-black top-0 right-4 rounded-full flex items-center justify-center font-medium text-xs">
+                0
+              </span>
+            </div>
+          </Link>
         </div>
       </div>
 
@@ -122,13 +127,15 @@ const Navbar = () => {
               <h2 className="text-base font-semibold -mt-1">Accounts</h2>
             </div>
           </div>
-          <div className="relative flex flex-col justify-center items-center gap-2 h-12 px-5 rounded-full bg-transparent hover:bg-yellow-500 duration-500">
-            <BsCart2 className="text-2xl" />
-            <p>$0.00</p>
-            <span className="absolute w-4 h-4 bg-yellow-400 text-black top-0 right-4 rounded-full flex items-center justify-center font-medium text-xs">
-              0
-            </span>
-          </div>
+          <Link href="cart">
+            <div className="relative flex flex-col justify-center items-center gap-2 h-12 px-5 rounded-full bg-transparent hover:bg-yellow-500 duration-500">
+              <BsCart2 className="text-2xl" />
+              <p>$0.00</p>
+              <span className="absolute w-4 h-4 bg-yellow-400 text-black top-0 right-4 rounded-full flex items-center justify-center font-medium text-xs">
+                0
+              </span>
+            </div>
+          </Link>
         </nav>
       </div>
     </header>
